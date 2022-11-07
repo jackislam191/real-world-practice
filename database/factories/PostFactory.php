@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PostFactory extends Factory
 {
+    protected $model = Post::class;
     /**
      * Define the model's default state.
      *
@@ -18,6 +21,13 @@ class PostFactory extends Factory
     {
         return [
             //
+            'title' => fake()->word(),
+            'content' => fake()->paragraph(),
+            'user_id' => User::factory(),
+            'is_published' => true,
+            'created_at' => now(),
+            'updated_at' => now(),
+
         ];
     }
 }
