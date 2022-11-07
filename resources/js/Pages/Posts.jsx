@@ -7,7 +7,7 @@ const Posts = (props) => {
         <AuthenticatedLayout
             auth={props.auth}
             errors={props.errors}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Posts</h2>}
         >
             <Head title="Posts" />
             <div className="py-12">
