@@ -32,8 +32,17 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::get('/posts', function () {
-    return Inertia::render('Posts');
-})->middleware(['auth', 'verified'])->name('posts');
+// It is still valid, but currently no plan for it...
+
+// Route::get('/posts', function () {
+//     return Inertia::render('Posts');
+// })->middleware(['auth', 'verified'])->name('posts');
+
+
+//temp route for posts
+Route::get('/posts', [PostsController::class, 'index']);
+Route::get('/posts/detail/{id}', [PostsController::class, 'detail']);
+
+
 
 require __DIR__.'/auth.php';
