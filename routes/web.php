@@ -38,10 +38,14 @@ Route::get('/dashboard', function () {
 //     return Inertia::render('Posts');
 // })->middleware(['auth', 'verified'])->name('posts');
 
-
+// Route::resource('posts', PostsController::class)->except(['show']);
+// Route::get('/posts/listing', function() {
+//     return Inertia::render('Posts/Listing');
+// });
 //temp route for posts
 Route::get('/posts', [PostsController::class, 'index']);
 Route::get('/posts/detail/{id}', [PostsController::class, 'detail']);
+// Route::get('/posts/detail/{id}', [PostsController::class, 'detail']);
 
 
 
