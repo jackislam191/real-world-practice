@@ -50,7 +50,8 @@ Route::get('/posts/detail/{id}', [App\Http\Controllers\Posts\PostsController::cl
 // Route::get('/posts/detail/{id}', [PostsController::class, 'detail']);
 
 Route::get('/admin/posts', [\App\Http\Controllers\Posts\Admin\PostsController::class, 'index']);
-Route::get('/admin/posts/create', [\App\Http\Controllers\Posts\Admin\PostsController::class, 'create']);
-Route::post('/admin/posts/preview', [\App\Http\Controllers\Posts\Admin\PostsController::class, 'preview']);
+Route::get('/admin/posts/create', [\App\Http\Controllers\Posts\Admin\PostsController::class, 'create'])->name('adminposts.create');
+Route::post('/admin/posts/preview', [\App\Http\Controllers\Posts\Admin\PostsController::class, 'preview'])->name('adminposts.preview');
+Route::get('/admin/posts/view/{id}', [\App\Http\Controllers\Posts\Admin\PostsController::class, 'view'])->name('adminposts.view');
 
 require __DIR__.'/auth.php';

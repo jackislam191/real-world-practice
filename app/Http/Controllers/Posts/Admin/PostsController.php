@@ -36,7 +36,7 @@ class PostsController extends Controller {
                 [
                     'id' => $request->id,
                     'title' => $request->title,
-                    'user_id' => 12,
+                    'user_id' => 12, // need add auth middleware for this admin route
                     'content' => $request->content,
                     'is_published' => 1,
                     'created_at' => now(),
@@ -44,7 +44,15 @@ class PostsController extends Controller {
                 ]
             );
         }
+        return redirect()
+            ->route('adminposts.view', ['id' => $request->id] );
+    }
 
+    public function view($id) {
+        $post = DB::table('posts')
+                ->where('id', '=' , $id)
+                ->get();
+        return Inertia::render('Admin/Posts/View', ['post' => $post] );
     }
 
 }
