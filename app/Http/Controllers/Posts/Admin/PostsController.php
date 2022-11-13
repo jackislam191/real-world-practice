@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\ValidationException;
+
 
 class PostsController extends Controller {
     public function index() {
@@ -24,12 +26,25 @@ class PostsController extends Controller {
 
     public function preview(Request $request) {
         //should add the preview MODAL
-        dd($request);
         $postData = $this->validate($request, [
-
+            'id' => 'required|unique:posts',
+            'title' => 'required',
         ]);
 
-        // return Inertia::render()
+        if ($postData) {
+            DB::table('posts')->insert(
+                [
+                    'id' => $request->id,
+                    'title' => $request->title,
+                    'user_id' => 12,
+                    'content' => $request->content,
+                    'is_published' => 1,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]
+            );
+        }
+
     }
 
 }

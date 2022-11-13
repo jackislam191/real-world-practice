@@ -33,7 +33,7 @@ const Create = (props) => {
                 <div>
                     <label htmlFor="content">Content</label>
                     <br />
-                    <input type="text" name="content" required onChange={handleChange} />
+                    <input type="text" name="content"  onChange={handleChange} />
                 </div>
                 <br />
 
